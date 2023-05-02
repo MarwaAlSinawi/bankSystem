@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class LoanService {
@@ -28,5 +29,10 @@ public class LoanService {
         Customer customer = customerRepository.findById(loanRequest.getCustomer_Id()).get();
         loan.setCustomer(customer);
         loanRepository.save(loan);
+    }
+    public List<Loan> getAllLoan() {
+        return  loanRepository.getAllLoan();
+
+
     }
 }

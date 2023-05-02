@@ -1,11 +1,17 @@
 package com.bankSystem.com.bankSystem.codline.Controlles;
 
+import com.bankSystem.com.bankSystem.codline.Models.Customer;
+import com.bankSystem.com.bankSystem.codline.Models.Loan;
+import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
+import com.bankSystem.com.bankSystem.codline.Repositories.LoanRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.LoanRequest;
 import com.bankSystem.com.bankSystem.codline.Services.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "Loan")
@@ -22,5 +28,12 @@ public class LoanController {
             return "Failed try again";
         }
         return "Loan Created Successfully :)";
+    }
+    @RequestMapping(value = "/getAllLoan", method = RequestMethod.GET)
+    //function that returns all Loan
+    public List<Loan> getAllLoan() {
+        LoanRepository loanRepository;
+        List<Loan> loans=loanService.getAllLoan();
+        return loans;
     }
 }
