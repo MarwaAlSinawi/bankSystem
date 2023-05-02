@@ -1,9 +1,16 @@
 package com.bankSystem.com.bankSystem.codline.Controlles;
 
+import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
+import com.bankSystem.com.bankSystem.codline.Models.Customer;
+import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
+import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
 import com.bankSystem.com.bankSystem.codline.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "Customer")
@@ -15,5 +22,12 @@ public class CustomerController {
     @RequestMapping(value = "/createCustomer")
     public void createCustomer(String name, String email, String phone) {
         customerService.createCustomer(name,email,phone);
+    }
+    @RequestMapping(value = "/getAllCustomer", method = RequestMethod.GET)
+    //function that returns all Customer
+    public List<Customer> getAllCustomer() {
+        CustomerRepository customerRepository;
+        List<Customer> customers= customerService.getAllCustomer();
+        return customers;
     }
 }
