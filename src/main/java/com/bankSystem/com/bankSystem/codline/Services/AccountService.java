@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -26,6 +27,10 @@ public class AccountService {
         Customer customer =customerRepository.getCustomerById(accountRequest.getCustomerId());
         accounts.setCustomer(customer);
         accountRepository.save(accounts);
+
+    }
+    public List<Account> getAllAccount() {
+        return accountRepository.getAllAccount();
 
     }
 }
