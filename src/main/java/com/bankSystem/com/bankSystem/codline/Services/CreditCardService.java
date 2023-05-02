@@ -1,5 +1,6 @@
 package com.bankSystem.com.bankSystem.codline.Services;
 
+import com.bankSystem.com.bankSystem.codline.Models.Account;
 import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
 import com.bankSystem.com.bankSystem.codline.Models.Customer;
 import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class CreditCardService {
@@ -32,5 +34,9 @@ public class CreditCardService {
             creditCard.setCustomer(customer);
             creditCardRepository.save(creditCard);
         }
+    public List<CreditCard> getAllCreditCard() {
+        return creditCardRepository.getAllCreditCard();
+
+    }
     }
 
