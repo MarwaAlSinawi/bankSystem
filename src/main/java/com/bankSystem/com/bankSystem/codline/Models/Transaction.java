@@ -20,6 +20,9 @@ public class Transaction extends  BaseEntity{
 
 
     Date TransactionDate;
+    @ManyToOne
+    @JoinColumn(name="CreditCard_Id",referencedColumnName = "id")
+    CreditCard creditCard;
 
 
 

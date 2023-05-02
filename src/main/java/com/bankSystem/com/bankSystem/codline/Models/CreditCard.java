@@ -16,4 +16,8 @@ public class CreditCard extends  BaseEntity{
 
 
     Double CreditLimit;
+    @OneToOne
+    @JoinColumn(name="Customer_Id",referencedColumnName = "id")
+    Customer customer;
+
 }

@@ -19,6 +19,9 @@ public class Loan extends  BaseEntity {
 
     Double InsertRate;
 
+    @OneToOne
+    @JoinColumn(name="Customer_Id",referencedColumnName = "id")
+    Customer customer;
 
 
 }
