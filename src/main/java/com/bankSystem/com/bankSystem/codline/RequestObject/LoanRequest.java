@@ -21,4 +21,6 @@ public class LoanRequest {
 
 
     Double InsertRate;
+
+    Integer Customer_Id;
 }
