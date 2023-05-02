@@ -36,5 +36,9 @@ public class TransactionController {
         List<Transaction> Transactions=transactionService.getAllTransaction();
         return Transactions;
     }
+    @RequestMapping(value = "updateTransaction",method = RequestMethod.POST)
+    public void updateTransaction(TransactionRequest transactionRequest){
+        transactionService .updateTransaction( transactionRequest);
+    }
 
 }

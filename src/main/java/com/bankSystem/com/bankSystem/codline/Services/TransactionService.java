@@ -43,8 +43,17 @@ public class TransactionService {
     public List<Transaction> getAllTransaction() {
         return transactionRepository.getAllTransaction();
 
+    }
 
 
+
+
+    public void updateTransaction(TransactionRequest transactionRequest) {
+        Transaction transaction=transactionRepository.getTransactionById(transactionRequest.getId());
+        transaction.setAmount(transactionRequest.getAmount());
+        transaction.setTransactionDate(transactionRequest.getTransactionDate();
+        transaction.setIsActive(Boolean.TRUE);
+        transactionRepository.save(transaction);
     }
 }
 
