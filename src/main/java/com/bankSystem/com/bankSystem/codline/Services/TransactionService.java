@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TransactionService {
@@ -38,6 +39,12 @@ public class TransactionService {
         CreditCard creditCard = creditCardRepository.findById(transactionRequest.getCreditCard_Id()).get();
         transaction.setCreditCard(creditCard);
         transactionRepository.save(transaction);
+    }
+    public List<Transaction> getAllTransaction() {
+        return transactionRepository.getAllTransaction();
+
+
+
     }
 }
 
