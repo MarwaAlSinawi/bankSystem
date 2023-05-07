@@ -6,6 +6,7 @@ import com.bankSystem.com.bankSystem.codline.Models.Customer;
 import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.CreditCardRequest;
+import com.bankSystem.com.bankSystem.codline.RequestObject.CustomerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,13 @@ public class CreditCardService {
     public List<CreditCard> getAllCreditCard() {
         return creditCardRepository.getAllCreditCard();
 
+    }
+    public void UpdateCreditCard(CreditCardRequest creditCardRequest)throws ParseException {
+        CreditCard creditCard=creditCardRepository.getCreditCardByID(creditCardRequest.getId());
+        creditCard.setCardNumber(creditCardRequest.getCardNumber());
+        creditCard.setCreditLimit(creditCardRequest.getCreditLimit());
+        creditCard.setIsActive(Boolean.TRUE);
+        creditCardRepository.save(creditCard);
     }
     }
 
