@@ -58,6 +58,13 @@ public class TransactionService {
         transaction.setIsActive(Boolean.TRUE);
         transactionRepository.save(transaction);
     }
+    public void deleteTransactionById(TransactionRequest transactionRequest) {
+        Transaction transaction=transactionRepository.getTransactionById((transactionRequest.getId()));
+        transaction.setIsActive(Boolean.FALSE);
+        transactionRepository.save(transaction);
+
+    }
+
 }
 
 

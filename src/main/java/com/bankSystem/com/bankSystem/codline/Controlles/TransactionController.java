@@ -3,6 +3,7 @@ package com.bankSystem.com.bankSystem.codline.Controlles;
 import com.bankSystem.com.bankSystem.codline.Models.Loan;
 import com.bankSystem.com.bankSystem.codline.Models.Transaction;
 import com.bankSystem.com.bankSystem.codline.Repositories.LoanRepository;
+import com.bankSystem.com.bankSystem.codline.RequestObject.AccountRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import com.bankSystem.com.bankSystem.codline.Services.AccountService;
 import com.bankSystem.com.bankSystem.codline.Services.TransactionService;
@@ -44,6 +45,14 @@ public class TransactionController {
             return "Failed try again";
         }
         return "Transaction update Successfully :)";
+    } @RequestMapping(value = "/deleteTransactionById", method = RequestMethod.POST)
+    public String deleteTransactionById(TransactionRequest transactionRequest) {
+        try {
+            transactionService.deleteTransactionById(transactionRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Transaction deleted Successfully :)";
     }
 
 

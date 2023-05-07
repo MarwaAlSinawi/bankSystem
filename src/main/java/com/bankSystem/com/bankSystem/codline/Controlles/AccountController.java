@@ -50,7 +50,5 @@ public class AccountController {
         }
         return "Account deleted Successfully :)";
     }
-//    @RequestMapping(value = "deleteAccountById", method = RequestMethod.POST)
-//    public void deleteAccountById(@RequestParam Integer AccountId) {
-//        accountService.deleteAccountById(AccountId);
+
     }
