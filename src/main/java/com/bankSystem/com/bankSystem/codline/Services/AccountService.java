@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -50,5 +51,23 @@ public class AccountService {
         Account account = accountRepository.getAccountById(accountRequest.getId());
         account.setIsActive(Boolean.FALSE);
         accountRepository.save(account);
+
+
+
+
+    }public String generateMonthlyStatement(Integer accountId) {
+        Account account = accountRepository.getAccountById(accountId);
+        Customer customer = account.getCustomer();
+        LocalDate currentDate = LocalDate.now();
+        LocalDate statementDate = LocalDate.of(currentDate.getYear(), currentDate.getMonth(), 1);
+
+        String statementForAccount = "Monthly Statement for Account: " + account.getAccountNumber() + "\n" +
+                "Customer Name: " + customer.getName()+"\n"+
+                "Month: " + statementDate.getMonth().toString() + " " + statementDate.getYear() + "\n" +
+                "Customer Email: " + customer.getEmail() + "\n" +
+                "Customer Phone: " + customer.getPhone() + "\n" +
+                "Account Balance: " + account.getBalance() + "\n" ;
+
+        return statementForAccount;
     }
 }
