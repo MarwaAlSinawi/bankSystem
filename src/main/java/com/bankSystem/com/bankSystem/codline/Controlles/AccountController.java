@@ -8,6 +8,7 @@ import com.bankSystem.com.bankSystem.codline.Services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -40,4 +41,16 @@ public class AccountController {
         return "Account update Successfully :)";
     }
 
-}
+    @RequestMapping(value = "/deleteAccountById", method = RequestMethod.POST)
+    public String deleteAccountById(AccountRequest accountRequest) {
+        try {
+            accountService.deleteAccountById(accountRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Account deleted Successfully :)";
+    }
+//    @RequestMapping(value = "deleteAccountById", method = RequestMethod.POST)
+//    public void deleteAccountById(@RequestParam Integer AccountId) {
+//        accountService.deleteAccountById(AccountId);
+    }
