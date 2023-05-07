@@ -2,6 +2,7 @@ package com.bankSystem.com.bankSystem.codline.Repositories;
 
 import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
 import com.bankSystem.com.bankSystem.codline.Models.Customer;
+import com.bankSystem.com.bankSystem.codline.Models.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,4 +19,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 
     @Query("SELECT c from Customer c")
     List<Customer> getAllCustomer();
+
+
+
 }

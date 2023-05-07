@@ -4,6 +4,8 @@ import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
 import com.bankSystem.com.bankSystem.codline.Models.Customer;
 import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
+import com.bankSystem.com.bankSystem.codline.RequestObject.CustomerRequest;
+import com.bankSystem.com.bankSystem.codline.RequestObject.LoanRequest;
 import com.bankSystem.com.bankSystem.codline.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,4 +32,15 @@ public class CustomerController {
         List<Customer> customers= customerService.getAllCustomer();
         return customers;
     }
+    @RequestMapping(value = "/updateCustomer", method = RequestMethod.POST)
+    public String updateCustomer(CustomerRequest customerRequest) {
+        try {
+            customerService.updateCustomer(customerRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Customer update Successfully :)";
+    }
 }
+
+

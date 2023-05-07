@@ -2,10 +2,14 @@ package com.bankSystem.com.bankSystem.codline.Services;
 
 import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
 import com.bankSystem.com.bankSystem.codline.Models.Customer;
+import com.bankSystem.com.bankSystem.codline.Models.Loan;
 import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
+import com.bankSystem.com.bankSystem.codline.RequestObject.CustomerRequest;
+import com.bankSystem.com.bankSystem.codline.RequestObject.LoanRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -27,5 +31,13 @@ public class CustomerService {
         return customerRepository.getAllCustomer();
 
 
+    }
+    public void updateCustomer(CustomerRequest customerRequest)throws ParseException {
+        Customer customer=customerRepository.getCustomerById(customerRequest.getId());
+        customer.setName(customerRequest.getName());
+        customer.setEmail(customerRequest.getEmail());
+        customer.setPhone(customerRequest.getPhone());
+        customer.setIsActive(Boolean.TRUE);
+        customerRepository.save(customer);
     }
 }
