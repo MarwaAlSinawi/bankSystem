@@ -3,10 +3,12 @@ package com.bankSystem.com.bankSystem.codline.Services;
 import com.bankSystem.com.bankSystem.codline.Models.Account;
 import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
 import com.bankSystem.com.bankSystem.codline.Models.Customer;
+import com.bankSystem.com.bankSystem.codline.Models.Transaction;
 import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.CreditCardRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.CustomerRequest;
+import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,12 @@ public class CreditCardService {
         creditCard.setCreditLimit(creditCardRequest.getCreditLimit());
         creditCard.setIsActive(Boolean.TRUE);
         creditCardRepository.save(creditCard);
+    }
+    public void deleteCreditCardById(CreditCardRequest creditCardRequest) {
+        CreditCard creditCard=creditCardRepository.getCreditCardById(creditCardRequest.getId());
+        creditCard.setIsActive(Boolean.FALSE);
+        creditCardRepository.save(creditCard);
+
     }
     }
 

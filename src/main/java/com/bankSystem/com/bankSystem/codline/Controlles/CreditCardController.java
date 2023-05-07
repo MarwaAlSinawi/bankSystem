@@ -6,6 +6,7 @@ import com.bankSystem.com.bankSystem.codline.Repositories.AccountRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.CreditCardRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.CustomerRequest;
+import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import com.bankSystem.com.bankSystem.codline.Services.CreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,4 +47,14 @@ public class CreditCardController {
         }
         return "CreditCard update Successfully :)";
     }
+ @RequestMapping(value = "/deleteCreditCardById", method = RequestMethod.POST)
+public String deleteCreditCardById(CreditCardRequest creditCardRequest) {
+    try {
+        creditCardService.deleteCreditCardById(creditCardRequest);
+    } catch (Exception e) {
+        return "Failed try again";
+    }
+    return "CreditCard deleted Successfully :)";
+}
+
 }
