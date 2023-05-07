@@ -45,9 +45,6 @@ public class TransactionController {
         }
         return "Transaction update Successfully :)";
     }
-//    @RequestMapping(value = "updateTransaction",method = RequestMethod.POST)
-//    public void updateTransaction(TransactionRequest transactionRequest){
-//        transactionService .updateTransaction( transactionRequest);
-//    }
+
 
 }

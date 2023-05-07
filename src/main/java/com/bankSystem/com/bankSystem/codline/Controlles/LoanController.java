@@ -5,6 +5,7 @@ import com.bankSystem.com.bankSystem.codline.Models.Loan;
 import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.LoanRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.LoanRequest;
+import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import com.bankSystem.com.bankSystem.codline.Services.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,14 @@ public class LoanController {
         LoanRepository loanRepository;
         List<Loan> loans=loanService.getAllLoan();
         return loans;
+    }
+    @RequestMapping(value = "/updateLoan", method = RequestMethod.POST)
+    public String updateLoan(LoanRequest loanRequest) {
+        try {
+            loanService.updateLoan(loanRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Loan update Successfully :)";
     }
 }
