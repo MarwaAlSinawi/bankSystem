@@ -4,6 +4,7 @@ import com.bankSystem.com.bankSystem.codline.Models.Customer;
 import com.bankSystem.com.bankSystem.codline.Models.Loan;
 import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.LoanRepository;
+import com.bankSystem.com.bankSystem.codline.RequestObject.CreditCardRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.LoanRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import com.bankSystem.com.bankSystem.codline.Services.LoanService;
@@ -45,5 +46,14 @@ public class LoanController {
             return "Failed try again";
         }
         return "Loan update Successfully :)";
+    }
+    @RequestMapping(value = "/deleteLoanById", method = RequestMethod.POST)
+    public String deleteLoanById(LoanRequest loanRequest) {
+        try {
+            loanService.deleteLoanById(loanRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Loan deleted Successfully :)";
     }
 }

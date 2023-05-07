@@ -1,10 +1,12 @@
 package com.bankSystem.com.bankSystem.codline.Services;
 
+import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
 import com.bankSystem.com.bankSystem.codline.Models.Customer;
 import com.bankSystem.com.bankSystem.codline.Models.Loan;
 import com.bankSystem.com.bankSystem.codline.Models.Transaction;
 import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.LoanRepository;
+import com.bankSystem.com.bankSystem.codline.RequestObject.CreditCardRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.LoanRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +47,11 @@ public class LoanService {
         loan.setInsertRate(loanRequest.getInsertRate());
         loan.setIsActive(Boolean.TRUE);
         loanRepository.save(loan);
+    }
+    public void deleteLoanById(LoanRequest loanRequest) {
+        Loan loan=loanRepository.getLoanById(loanRequest.getId());
+        loan.setIsActive(Boolean.FALSE);
+        loanRepository.save(loan);
+
     }
 }
