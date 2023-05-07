@@ -40,6 +40,14 @@ public class CustomerController {
             return "Failed try again";
         }
         return "Customer update Successfully :)";
+    }  @RequestMapping(value = "/deleteCustomerById", method = RequestMethod.POST)
+    public String deleteCustomerById(CustomerRequest customerRequest) {
+        try {
+            customerService.deleteCustomerById(customerRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Customer deleted Successfully :)";
     }
 }
 

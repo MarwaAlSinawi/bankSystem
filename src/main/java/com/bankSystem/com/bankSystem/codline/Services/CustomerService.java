@@ -39,5 +39,10 @@ public class CustomerService {
         customer.setPhone(customerRequest.getPhone());
         customer.setIsActive(Boolean.TRUE);
         customerRepository.save(customer);
+    } public void deleteCustomerById(CustomerRequest customerRequest) {
+        Customer customer=customerRepository.getCustomerById(customerRequest.getId());
+        customer.setIsActive(Boolean.FALSE);
+        customerRepository.save(customer);
+
     }
 }
