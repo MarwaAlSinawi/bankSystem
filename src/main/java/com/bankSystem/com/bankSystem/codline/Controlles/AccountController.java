@@ -3,6 +3,7 @@ package com.bankSystem.com.bankSystem.codline.Controlles;
 import com.bankSystem.com.bankSystem.codline.Models.Account;
 import com.bankSystem.com.bankSystem.codline.Repositories.AccountRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.AccountRequest;
+import com.bankSystem.com.bankSystem.codline.RequestObject.CreditCardRequest;
 import com.bankSystem.com.bankSystem.codline.Services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,15 @@ public class AccountController {
         List<Account> accounts = accountService.getAllAccount();
 
         return accounts;
+    }
+    @RequestMapping(value = "/updateAccountById", method = RequestMethod.POST)
+    public String updateAccountById(AccountRequest accountRequest) {
+        try {
+            accountService.updateAccount(accountRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Account update Successfully :)";
     }
 
 }
