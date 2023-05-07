@@ -36,9 +36,18 @@ public class TransactionController {
         List<Transaction> Transactions=transactionService.getAllTransaction();
         return Transactions;
     }
-    @RequestMapping(value = "updateTransaction",method = RequestMethod.POST)
-    public void updateTransaction(TransactionRequest transactionRequest){
-        transactionService .updateTransaction( transactionRequest);
+    @RequestMapping(value = "/updateTransaction", method = RequestMethod.POST)
+    public String updateTransaction(TransactionRequest transactionRequest) {
+        try {
+            transactionService.updateTransaction( transactionRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Transaction update Successfully :)";
     }
+//    @RequestMapping(value = "updateTransaction",method = RequestMethod.POST)
+//    public void updateTransaction(TransactionRequest transactionRequest){
+//        transactionService .updateTransaction( transactionRequest);
+//    }
 
 }

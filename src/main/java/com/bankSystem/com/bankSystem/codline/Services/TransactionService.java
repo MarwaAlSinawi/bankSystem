@@ -13,6 +13,7 @@ import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Id;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,7 +32,7 @@ public class TransactionService {
         Transaction transaction = new Transaction(); // create object
         transaction.setAmount(transactionRequest.getAmount());
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
-        Date convertedDateFromStringToDateFormat = dateFormatter.parse(transactionRequest.getTransactionDate());
+       Date convertedDateFromStringToDateFormat = dateFormatter.parse(transactionRequest.getTransactionDate());
         transaction.setTransactionDate(convertedDateFromStringToDateFormat);
         transaction.setUpdatedDate(new Date()); // give current date
         transaction.setCreatedDate(new Date());// give current date
@@ -48,12 +49,15 @@ public class TransactionService {
 
 
 
-    public void updateTransaction(TransactionRequest transactionRequest) {
+    public void updateTransaction(TransactionRequest transactionRequest)throws ParseException {
         Transaction transaction=transactionRepository.getTransactionById(transactionRequest.getId());
         transaction.setAmount(transactionRequest.getAmount());
-        transaction.setTransactionDate(transactionRequest.getTransactionDate();
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(transactionRequest.getTransactionDate());
+        transaction.setTransactionDate(convertedDateFromStringToDateFormat);
         transaction.setIsActive(Boolean.TRUE);
         transactionRepository.save(transaction);
     }
 }
+
 
