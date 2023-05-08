@@ -63,6 +63,9 @@ public class TransactionService {
         transaction.setIsActive(Boolean.FALSE);
         transactionRepository.save(transaction);
 
+    }public Double getTransactionsAmountByAccountId(Integer id) {
+        Double transaction =transactionRepository.getTransactionsAmountByAccountId(id);
+        return transaction;
     }
 
 }

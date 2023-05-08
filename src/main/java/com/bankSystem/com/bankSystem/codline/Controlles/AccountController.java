@@ -1,6 +1,7 @@
 package com.bankSystem.com.bankSystem.codline.Controlles;
 
 import com.bankSystem.com.bankSystem.codline.Models.Account;
+import com.bankSystem.com.bankSystem.codline.Models.Transaction;
 import com.bankSystem.com.bankSystem.codline.Repositories.AccountRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.AccountRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.CreditCardRequest;
@@ -51,6 +52,15 @@ public class AccountController {
     public ResponseEntity<String> generateMonthlyStatementForAccount(@RequestParam Integer accountId) {
         String statement = accountService.generateMonthlyStatement(accountId);
         return ResponseEntity.ok(statement);
+    }@RequestMapping(value = "UpdateTheBalanceAfterTransactions", method = RequestMethod.GET)
+    public Double UpdateTheBalanceAfterTransactions(@RequestParam Integer id){
+        Double account=accountService.UpdateTheBalanceAfterTransactions(id);
+        return account;
+    }
+    @RequestMapping(value = "getAccountHistory", method = RequestMethod.GET)
+    public List<Transaction> getAccountHistory(@RequestParam Integer accountId) {
+        List<Transaction> account = accountService.getAccountHistory(accountId);
+        return account;
     }
 
     }

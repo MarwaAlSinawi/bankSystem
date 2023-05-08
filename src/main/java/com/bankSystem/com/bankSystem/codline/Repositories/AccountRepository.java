@@ -19,4 +19,7 @@ public interface AccountRepository extends JpaRepository<Account,Integer> {
         // :id is coming from the user
     Account getAccountById(@Param("AccountId") Integer id);
 
+    @Query(value="SELECT a.balance from Account a where a.id = :id")
+    Double getBalance(@Param("id") Integer id);
+
 }

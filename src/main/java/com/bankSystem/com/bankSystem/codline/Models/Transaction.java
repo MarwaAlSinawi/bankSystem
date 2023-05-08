@@ -1,4 +1,5 @@
 package com.bankSystem.com.bankSystem.codline.Models;
+import com.bankSystem.com.bankSystem.codline.Repositories.AccountRepository;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -23,6 +24,10 @@ public class Transaction extends  BaseEntity{
     @ManyToOne
     @JoinColumn(name="CreditCard_Id",referencedColumnName = "id")
     CreditCard creditCard;
+
+    @ManyToOne
+    @JoinColumn(name="Account_Id",referencedColumnName = "id")
+    Account account;
 
 
 
