@@ -104,4 +104,7 @@ public class AccountService {
         return transactions;
 
     }
+    public List<Account> getCustomerAccountInformation(Integer customerId) {
+        return accountRepository.getCustomerAccountInformation(customerId);
+    }
 }

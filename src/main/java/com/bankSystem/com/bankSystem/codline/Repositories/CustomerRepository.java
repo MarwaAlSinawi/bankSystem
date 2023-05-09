@@ -1,5 +1,6 @@
 package com.bankSystem.com.bankSystem.codline.Repositories;
 
+import com.bankSystem.com.bankSystem.codline.Models.Account;
 import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
 import com.bankSystem.com.bankSystem.codline.Models.Customer;
 import com.bankSystem.com.bankSystem.codline.Models.Loan;
@@ -21,5 +22,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     List<Customer> getAllCustomer();
 
 
+    @Query(value = "Select a From Account a WHERE a.customer.id = :id")
+    List<Account> getCustomerAccountInformation(@Param("id") Integer customerId);
 
 }
