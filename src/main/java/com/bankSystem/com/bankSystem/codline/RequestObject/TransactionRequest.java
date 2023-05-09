@@ -19,4 +19,7 @@ public class TransactionRequest {
     String TransactionDate;
 
     Integer CreditCard_Id;
+
+    private Integer accountNumber;
+    private String isActive;
 }

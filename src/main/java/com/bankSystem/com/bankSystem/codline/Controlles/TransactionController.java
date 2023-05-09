@@ -8,10 +8,7 @@ import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import com.bankSystem.com.bankSystem.codline.Services.AccountService;
 import com.bankSystem.com.bankSystem.codline.Services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -53,6 +50,16 @@ public class TransactionController {
             return "Failed try again";
         }
         return "Transaction deleted Successfully :)";
+
+
+    } @RequestMapping(value = "makeTransaction", method = RequestMethod.GET)
+    public String makeTransaction(@RequestBody TransactionRequest transactionRequest) {
+        try {
+            transactionService.createTransaction(transactionRequest);
+            return "Transaction made Successfully";
+        } catch (Exception e) {
+            return "Transaction Failed";
+        }
     }
 
 

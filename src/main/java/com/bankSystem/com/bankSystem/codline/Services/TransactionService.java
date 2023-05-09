@@ -1,19 +1,15 @@
 package com.bankSystem.com.bankSystem.codline.Services;
-
 import com.bankSystem.com.bankSystem.codline.Models.Account;
 import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
-import com.bankSystem.com.bankSystem.codline.Models.Customer;
 import com.bankSystem.com.bankSystem.codline.Models.Transaction;
 import com.bankSystem.com.bankSystem.codline.Repositories.AccountRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
-import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.TransactionRepository;
-import com.bankSystem.com.bankSystem.codline.RequestObject.AccountRequest;
 import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Id;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,6 +22,9 @@ public class TransactionService {
     TransactionRepository transactionRepository;
     @Autowired
     CreditCardRepository creditCardRepository;
+
+    @Autowired
+    AccountRepository accountRepository;
 
 
     public void createTransaction(TransactionRequest transactionRequest) throws ParseException {
@@ -66,6 +65,21 @@ public class TransactionService {
     }public Double getTransactionsAmountByAccountId(Integer id) {
         Double transaction =transactionRepository.getTransactionsAmountByAccountId(id);
         return transaction;
+    } public String createTransaction2(TransactionRequest transactionRequest){
+        Transaction transaction=new Transaction();
+        transaction.setAmount(transactionRequest.getAmount());
+        Integer id=accountRepository.getAccountByAccountNumber(transactionRequest.getAccountNumber());
+        Account account=accountRepository.findById(id).get();
+        transaction.setIsActive(account.getIsActive()); // if account is active then transaction is active
+        transaction.setAccount(account);
+        Double transactionAmount= transactionRequest.getAmount();
+        Double accountBalance=account.getBalance();
+        Double newBalance=accountBalance-transactionAmount;
+        account.setBalance(newBalance);
+        accountRepository.save(account);
+        transactionRepository.save(transaction);
+        return "Transaction done successfully";
+
     }
 
 }
