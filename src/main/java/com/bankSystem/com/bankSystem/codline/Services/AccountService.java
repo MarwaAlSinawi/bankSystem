@@ -107,4 +107,8 @@ public class AccountService {
     public List<Account> getCustomerAccountInformation(Integer customerId) {
         return accountRepository.getCustomerAccountInformation(customerId);
     }
+    public double getBalanceForAccount(Integer id) {
+        return accountRepository.getBalanceForAccount(id);
+
+    }
 }

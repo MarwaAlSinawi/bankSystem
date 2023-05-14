@@ -63,6 +63,11 @@ public class AccountController {
         return account;
     }
 
+    @RequestMapping(value = "getBalanceForAccount", method = RequestMethod.GET)
+    public double getBalanceForAccount(@RequestParam Integer id) {
+        return accountService.getBalanceForAccount(id);
+}
+
 }
 
 
