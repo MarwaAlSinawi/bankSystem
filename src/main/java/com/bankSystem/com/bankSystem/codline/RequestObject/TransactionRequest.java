@@ -11,10 +11,7 @@ import java.util.Date;
 public class TransactionRequest {
     Integer id;
 
-
     Double Amount ;
-
-
 
     String TransactionDate;
 

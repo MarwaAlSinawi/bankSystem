@@ -1,12 +1,8 @@
 package com.bankSystem.com.bankSystem.codline.Controlles;
 
-import com.bankSystem.com.bankSystem.codline.Models.Account;
 import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
-import com.bankSystem.com.bankSystem.codline.Repositories.AccountRepository;
 import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.CreditCardRequest;
-import com.bankSystem.com.bankSystem.codline.RequestObject.CustomerRequest;
-import com.bankSystem.com.bankSystem.codline.RequestObject.TransactionRequest;
 import com.bankSystem.com.bankSystem.codline.Services.CreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

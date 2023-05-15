@@ -58,6 +58,8 @@ public class AccountController {
         return account;
     }
     @RequestMapping(value = "getAccountHistory", method = RequestMethod.GET)
+
+
     public List<Transaction> getAccountHistory(@RequestParam Integer accountId) {
         List<Transaction> account = accountService.getAccountHistory(accountId);
         return account;

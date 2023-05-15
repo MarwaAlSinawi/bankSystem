@@ -1,12 +1,12 @@
 package com.bankSystem.com.bankSystem.codline.Controlles;
 
 import com.bankSystem.com.bankSystem.codline.Models.Account;
-import com.bankSystem.com.bankSystem.codline.Models.CreditCard;
+
 import com.bankSystem.com.bankSystem.codline.Models.Customer;
-import com.bankSystem.com.bankSystem.codline.Repositories.CreditCardRepository;
+
 import com.bankSystem.com.bankSystem.codline.Repositories.CustomerRepository;
 import com.bankSystem.com.bankSystem.codline.RequestObject.CustomerRequest;
-import com.bankSystem.com.bankSystem.codline.RequestObject.LoanRequest;
+
 import com.bankSystem.com.bankSystem.codline.Services.AccountService;
 import com.bankSystem.com.bankSystem.codline.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,9 @@ public class CustomerController {
 
     @Autowired
     AccountService accountService;
+
+
+
 
     // Create a new customer record
     @RequestMapping(value = "/createCustomer")
@@ -59,6 +62,7 @@ public class CustomerController {
         List<Account> accountList =accountService.getCustomerAccountInformation(customerId);
         return accountList;
     }
+
 
 }
 
