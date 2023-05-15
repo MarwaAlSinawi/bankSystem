@@ -54,4 +54,9 @@ public class LoanService {
         loanRepository.save(loan);
 
     }
+    public Boolean getCustomerLoans(Integer customerId) {
+        Boolean loan = loanRepository.getLoanActivationByCustomerId(customerId);
+        return loan;
+
+    }
 }

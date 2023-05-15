@@ -11,6 +11,7 @@ import com.bankSystem.com.bankSystem.codline.Services.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -55,5 +56,10 @@ public class LoanController {
             return "Failed try again";
         }
         return "Loan deleted Successfully :)";
+    }
+    @RequestMapping(value = "/getCustomerLoansActivationStatus", method = RequestMethod.GET)
+    public Boolean getCustomerLoansActivationStatus(@RequestParam Integer customerId) {
+        Boolean loan = loanService.getCustomerLoans(customerId);
+        return loan;
     }
 }
